@@ -1,0 +1,46 @@
+.modal_form {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.form_title {
+  margin: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form_label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form_label_text {
+  text-align: left;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.category_switch_cont {
+  display: flex;
+}
+
+.category_switch_item {
+  margin-right: 10px;
+}
+
+.form_content {
+  resize: vertical;
+}
+
+.close_modal_butt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(8px);
+}
+
+.form_input {
+  border-radius: 4px;
+}
