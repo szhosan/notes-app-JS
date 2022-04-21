@@ -1,0 +1,70 @@
+[
+  {
+    "id": "l28wmwom",
+    "name": "Task #1",
+    "category": "task",
+    "categoryText": "Task",
+    "content": "Content of task #1",
+    "created": "April 21, 2022",
+    "isArchived": false,
+    "dates": ["April 30, 2022"]
+  },
+  {
+    "id": "l28wmfom",
+    "name": "Task #2",
+    "category": "task",
+    "categoryText": "Task",
+    "content": "Content of task #2",
+    "created": "April 21, 2022",
+    "isArchived": false
+  },
+  {
+    "id": "l23wmfom",
+    "name": "Idea #1",
+    "category": "idea",
+    "categoryText": "Idea",
+    "content": "Content of Idea #1",
+    "created": "April 20, 2022",
+    "isArchived": true,
+    "dates": ["April 29, 2022"]
+  },
+  {
+    "id": "l20wmflm",
+    "name": "Thought #1",
+    "category": "thought",
+    "categoryText": "Random thought",
+    "content": "Content of Thought #1",
+    "created": "April 20, 2022",
+    "isArchived": false,
+    "dates": ["April 29, 2022", "May 7, 2022"]
+  },
+  {
+    "id": "l2gwmfom",
+    "name": "Idea #11",
+    "category": "idea",
+    "categoryText": "Idea",
+    "content": "Content of Idea #11",
+    "created": "April 20, 2022",
+    "isArchived": true,
+    "dates": ["April 29, 2022"]
+  },
+  {
+    "id": "l88wmfom",
+    "name": "Task #25",
+    "category": "task",
+    "categoryText": "Task",
+    "content": "Content of task #25",
+    "created": "April 21, 2022",
+    "isArchived": false,
+    "dates": ["April 29, 2022"]
+  },
+  {
+    "id": "l20wmnbm",
+    "name": "Thought #77",
+    "category": "thought",
+    "categoryText": "Random thought",
+    "content": "Content of Thought #77",
+    "created": "April 20, 2022",
+    "isArchived": false
+  }
+]
