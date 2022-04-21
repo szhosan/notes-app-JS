@@ -33,8 +33,40 @@ refs.todoList.addEventListener('click', onTodoListClick);
 refs.archiveBtn.addEventListener('click', OnArchiveBtnClick);
 refs.form.addEventListener('submit', OnFormSubmit);
 
-const todoList = [];
 let showArchivedTodoItems = false;
+const todoList = [
+  {
+    id: 'l28wmwom',
+    name: 'Task #1',
+    category: 'task',
+    categoryText: 'Task',
+    content: 'Content of task #1',
+    created: 'April 21, 2022',
+    isArchived: false,
+    dates: ['April 30, 2022'],
+  },
+  {
+    id: 'l28wmfom',
+    name: 'Task #2',
+    category: 'task',
+    categoryText: 'Task',
+    content: 'Content of task #2',
+    created: 'April 21, 2022',
+    isArchived: false,
+    dates: ['April 29, 2022'],
+  },
+  {
+    id: 'l23wmfom',
+    name: 'Idea #1',
+    category: 'idea',
+    categoryText: 'Idea',
+    content: 'Content of Idea #1',
+    created: 'April 20, 2022',
+    isArchived: true,
+    dates: ['April 29, 2022'],
+  },
+];
+renderTodoItems(showArchivedTodoItems);
 
 function toggleModal() {
   refs.modal.classList.toggle('is-hidden');
@@ -83,6 +115,7 @@ function OnFormSubmit(e) {
   userSelectedDate = null;
   delete refs.form.dataset.id;
   form.submitBtn.innerHTML = 'Create note';
+  console.log(todoList);
 }
 
 function renderTodoItems(showArchived) {
