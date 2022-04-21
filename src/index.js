@@ -48,10 +48,23 @@ function OnFormSubmit(e) {
 
   const id = uniqid();
   const today = flatpickr.formatDate(new Date(), 'F d, Y');
+  let categoryText = '';
+  switch (form.category.value) {
+    case 'idea':
+      categoryText = 'Idea';
+      break;
+    case 'thought':
+      categoryText = 'Random thought';
+      break;
+    case 'task':
+      categoryText = 'Task';
+      break;
+  }
   const todoElement = {
     id: id,
     name: form.name.value,
     category: form.category.value,
+    categoryText: categoryText,
     content: form.content.value,
     created: today,
     isArchived: false,
@@ -102,10 +115,11 @@ function editItem(id) {
   toggleModal();
 }
 
-function updateTodoItem(id, { name, category, content, dates }) {
+function updateTodoItem(id, { name, category, categoryText, content, dates }) {
   const i = todoList.findIndex(todoItem => todoItem.id === id);
   todoList[i].name = name;
   todoList[i].category = category;
+  todoList[i].categoryText = categoryText;
   todoList[i].content = content;
   todoList[i].dates.push(...dates);
 }
@@ -120,7 +134,9 @@ function setItemsForEditToModal({ id, name, category, created, content, dates })
 
   const lastDeadline = dates[dates.length - 1];
   fp.defaultDate = new Date(lastDeadline);
-  form.deadline.value = lastDeadline;
+  if (lastDeadline) {
+    form.deadline.value = lastDeadline;
+  }
   form.submitBtn.innerHTML = 'Save changes';
 }
 
@@ -157,6 +173,7 @@ function calculateTodoListStats() {
   if (taskTodos.length > 0) {
     res.push({
       category: 'task',
+      categoryText: 'Task',
       active: taskTodos.filter(todo => !todo.isArchived).length,
       archivedAmount: taskTodos.filter(todo => todo.isArchived).length,
     });
@@ -164,6 +181,7 @@ function calculateTodoListStats() {
   if (thoughtTodos.length > 0) {
     res.push({
       category: 'thought',
+      categoryText: 'Random thought',
       active: thoughtTodos.filter(todo => !todo.isArchived).length,
       archivedAmount: thoughtTodos.filter(todo => todo.isArchived).length,
     });
@@ -171,6 +189,7 @@ function calculateTodoListStats() {
   if (ideaTodos.length > 0) {
     res.push({
       category: 'idea',
+      categoryText: 'Idea',
       active: ideaTodos.filter(todo => !todo.isArchived).length,
       archivedAmount: ideaTodos.filter(todo => todo.isArchived).length,
     });
