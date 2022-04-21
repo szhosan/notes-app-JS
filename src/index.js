@@ -17,6 +17,7 @@ const refs = {
   todoList: document.querySelector('.todos_list'),
   todoCategories: document.querySelector('.categories_list'),
   archiveBtn: document.querySelector('#butt_archive'),
+  deleteAllBtn: document.querySelector('#butt_delete_all'),
 };
 
 const options = {
@@ -33,6 +34,7 @@ refs.closeModalBtn.addEventListener('click', OnModalClose);
 refs.todoList.addEventListener('click', onTodoListClick);
 refs.archiveBtn.addEventListener('click', OnArchiveBtnClick);
 refs.form.addEventListener('submit', OnFormSubmit);
+refs.deleteAllBtn.addEventListener('click', onDeleteAllClick);
 
 let showArchivedTodoItems = false;
 const todoList = [...items];
@@ -170,4 +172,11 @@ function OnArchiveBtnClick() {
   showArchivedTodoItems = !showArchivedTodoItems;
   renderTodoItems(showArchivedTodoItems);
   document.querySelector('#head').classList.toggle('todos_header_archive');
+}
+
+function onDeleteAllClick() {
+  if (window.confirm('Do you really want to delete all todo items???')) {
+    todoList.splice(0, todoList.length);
+  }
+  renderTodoItems(showArchivedTodoItems);
 }
