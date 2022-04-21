@@ -7,8 +7,6 @@ import todoCategoryTemp from './template/todoCategoryItem.hbs';
 import calculateTodoListStats from './js/calculateStatistics';
 import items from './js/preItems.json';
 
-let userSelectedDate = null;
-
 const refs = {
   form: document.querySelector('.modal_form'),
   modal: document.querySelector('[data-modal]'),
@@ -19,15 +17,6 @@ const refs = {
   archiveBtn: document.querySelector('#butt_archive'),
   deleteAllBtn: document.querySelector('#butt_delete_all'),
 };
-
-const options = {
-  dateFormat: 'F d, Y',
-  onClose(selectedDates) {
-    userSelectedDate = selectedDates[0];
-  },
-};
-
-const fp = flatpickr('#datetime-picker', options);
 
 refs.openModalBtn.addEventListener('click', toggleModal);
 refs.closeModalBtn.addEventListener('click', OnModalClose);
@@ -77,12 +66,14 @@ function OnFormSubmit(e) {
     content: form.content.value,
     created: today,
     isArchived: false,
-    dates: [],
+    dates: form.content.value
+      .split(' ')
+      .filter(str =>
+        str.match(
+          '^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$',
+        ),
+      ),
   };
-  if (userSelectedDate) {
-    const selectedDate = flatpickr.formatDate(userSelectedDate, 'F d, Y');
-    todoElement.dates.push(selectedDate);
-  }
   if (elementIdToEdit) {
     updateTodoItem(elementIdToEdit, todoElement);
   } else {
@@ -91,7 +82,6 @@ function OnFormSubmit(e) {
   e.currentTarget.reset();
   toggleModal();
   renderTodoItems(showArchivedTodoItems);
-  userSelectedDate = null;
   delete refs.form.dataset.id;
   form.submitBtn.innerHTML = 'Create note';
 }
@@ -130,22 +120,16 @@ function updateTodoItem(id, { name, category, categoryText, content, dates }) {
   todoList[i].category = category;
   todoList[i].categoryText = categoryText;
   todoList[i].content = content;
-  todoList[i].dates.push(...dates);
+  todoList[i].dates = [...dates];
 }
 
-function setItemsForEditToModal({ id, name, category, created, content, dates }) {
+function setItemsForEditToModal({ id, name, category, created, content }) {
   const form = refs.form.elements;
   refs.form.dataset.id = id;
   form.title.value = `Edit note from ${created}`;
   form.name.value = name;
   form.category.value = category;
   form.content.value = content;
-
-  const lastDeadline = dates[dates.length - 1];
-  fp.defaultDate = new Date(lastDeadline);
-  if (lastDeadline) {
-    form.deadline.value = lastDeadline;
-  }
   form.submitBtn.innerHTML = 'Save changes';
 }
 
