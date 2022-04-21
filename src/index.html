@@ -15,7 +15,7 @@
     <!--todo list-->
 
     <div class="container">
-      <div class="todos_header_container">
+      <div id="head" class="todos_header_container">
         <div class="todos_icon_cont"></div>
         <div class="todos_name_cont">Name</div>
         <div class="todos_created_cont">Created</div>
@@ -23,17 +23,34 @@
         <div class="todos_content_cont">Content</div>
         <div class="todos_dates_cont">Dates</div>
         <div class="todos_butt_cont">
-          <button type="button" class="todos_oper_button" aria-label="add" data-modal-open>
+          <button
+            type="button"
+            class="todos_oper_button"
+            aria-label="add"
+            data-modal-open
+            title="add new item"
+          >
             <svg fill="white" width="25px" height="25px">
               <use href="./images/sprite.svg/#icon-add"></use>
             </svg>
           </button>
-          <button type="button" class="todos_oper_button" aria-label="archive">
+          <button
+            id="butt_archive"
+            type="button"
+            class="todos_oper_button"
+            aria-label="archive"
+            title="show/hide archived items"
+          >
             <svg fill="white" width="25px" height="25px">
               <use href="./images/sprite.svg/#icon-archive"></use>
             </svg>
           </button>
-          <button type="button" class="todos_oper_button" aria-label="clear">
+          <button
+            type="button"
+            class="todos_oper_button"
+            aria-label="delete all items"
+            title="delete all items"
+          >
             <svg fill="white" width="25px" height="25px">
               <use href="./images/sprite.svg/#icon-delete"></use>
             </svg>
@@ -41,39 +58,7 @@
         </div>
       </div>
 
-      <ul class="todos_list">
-        <li>
-          <div class="todos_header_container list_item">
-            <div class="todos_icon_cont">
-              <svg width="35px" height="35px">
-                <use href="../src/images/sprite.svg#icon-trophy"></use>
-              </svg>
-            </div>
-            <div class="todos_name_cont">The theory of evolut...</div>
-            <div class="todos_created_cont">April 27, 2021</div>
-            <div class="todos_category_cont">Random Thought</div>
-            <div class="todos_content_cont">The evolution</div>
-            <div class="todos_dates_cont">Dates</div>
-            <div class="todos_butt_cont">
-              <button type="button" class="todos_oper_button" aria-label="edit">
-                <svg width="25px" height="25px">
-                  <use href="./images/sprite.svg/#icon-edit"></use>
-                </svg>
-              </button>
-              <button type="button" class="todos_oper_button" aria-label="archive">
-                <svg width="25px" height="25px">
-                  <use href="./images/sprite.svg/#icon-archive"></use>
-                </svg>
-              </button>
-              <button type="button" class="todos_oper_button" aria-label="clear">
-                <svg width="25px" height="25px">
-                  <use href="./images/sprite.svg/#icon-delete"></use>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <ul class="todos_list"></ul>
 
       <div class="button_cont">
         <button type="button" data-modal-open>Create note</button>
@@ -87,20 +72,7 @@
         <div class="todos_active_cont">Active</div>
         <div class="todos_archived_cont">Archived</div>
       </div>
-      <ul class="categories_list">
-        <li>
-          <div class="todos_header_container list_item">
-            <div class="todos_icon_cont">
-              <svg width="35px" height="35px">
-                <use href="../src/images/sprite.svg#icon-trophy"></use>
-              </svg>
-            </div>
-            <div class="todos_note_category_cont">Task</div>
-            <div class="todos_active_cont">20</div>
-            <div class="todos_archived_cont">5</div>
-          </div>
-        </li>
-      </ul>
+      <ul class="categories_list"></ul>
     </div>
 
     <!--backdrop-->
@@ -118,7 +90,7 @@
         </button>
 
         <form class="modal_form" autocomplete="off">
-          <h2 class="form_title">Add new note</h2>
+          <h2 class="form_title"><output name="title">Add new note</output></h2>
 
           <label class="form_label">
             <span class="form_label_text">Name</span>
@@ -158,7 +130,7 @@
             <input class="form_input" type="text" id="datetime-picker" name="deadline" />
           </label>
 
-          <button type="submit">Create note</button>
+          <button name="submitBtn" type="submit">Create note</button>
         </form>
       </div>
     </div>

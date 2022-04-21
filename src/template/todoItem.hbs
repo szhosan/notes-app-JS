@@ -1,0 +1,36 @@
+<li>
+  <div class='todos_header_container list_item {{#if isArchived}}is_archived{{/if}}'>
+    <div class='todos_icon_cont {{category}}'></div>
+    <div class='todos_name_cont'>{{name}}</div>
+    <div class='todos_created_cont'>{{created}}</div>
+    <div class='todos_category_cont'>{{category}}</div>
+    <div class='todos_content_cont'>{{content}}</div>
+    <div class='todos_dates_cont'>{{#each dates}} {{this}} {{/each}}</div>
+    <div class='todos_butt_cont'>
+      <button
+        type='button'
+        class='todos_oper_button butt_edit'
+        aria-label='edit'
+        data-id='{{id}}'
+        data-operation='edit'
+        title="edit item"
+      ></button>
+      <button
+        type='button'
+        class='todos_oper_button butt_archive'
+        aria-label='archive'
+        data-id='{{id}}'
+        data-operation='archive'
+        title="change archive status"
+      ></button>
+      <button
+        type='button'
+        class='todos_oper_button butt_delete'
+        aria-label='delete'
+        data-id='{{id}}'
+        data-operation='delete'
+        title="delete item"
+      ></button>
+    </div>
+  </div>
+</li>
