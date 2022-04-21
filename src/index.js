@@ -46,23 +46,11 @@ function OnFormSubmit(e) {
   const elementIdToEdit = refs.form.dataset.id;
   const id = uniqid();
   const today = flatpickr.formatDate(new Date(), 'F d, Y');
-  let categoryText = '';
-  switch (form.category.value) {
-    case 'idea':
-      categoryText = 'Idea';
-      break;
-    case 'thought':
-      categoryText = 'Random thought';
-      break;
-    case 'task':
-      categoryText = 'Task';
-      break;
-  }
   const todoElement = {
     id: id,
     name: form.name.value,
     category: form.category.value,
-    categoryText: categoryText,
+    categoryText: capitalize(form.category.value),
     content: form.content.value,
     created: today,
     isArchived: false,
@@ -163,4 +151,20 @@ function onDeleteAllClick() {
     todoList.splice(0, todoList.length);
   }
   renderTodoItems(showArchivedTodoItems);
+}
+
+export default function capitalize(category) {
+  let categoryText = '';
+  switch (category) {
+    case 'idea':
+      categoryText = 'Idea';
+      break;
+    case 'thought':
+      categoryText = 'Random thought';
+      break;
+    case 'task':
+      categoryText = 'Task';
+      break;
+  }
+  return categoryText;
 }
