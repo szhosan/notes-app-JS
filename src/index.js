@@ -4,6 +4,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import todoItemTemp from './template/todoItem.hbs';
 import todoCategoryTemp from './template/todoCategoryItem.hbs';
+import calculateTodoListStats from './js/calculateStatistics';
 
 let userSelectedDate = null;
 
@@ -18,7 +19,6 @@ const refs = {
 };
 
 const options = {
-  /* defaultDate: new Date(), */
   dateFormat: 'F d, Y',
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
@@ -44,8 +44,6 @@ function OnFormSubmit(e) {
   e.preventDefault();
   const form = e.currentTarget.elements;
   const elementIdToEdit = refs.form.dataset.id;
-  console.log(elementIdToEdit);
-
   const id = uniqid();
   const today = flatpickr.formatDate(new Date(), 'F d, Y');
   let categoryText = '';
@@ -93,7 +91,7 @@ function renderTodoItems(showArchived) {
     .map(todoItemTemp)
     .join('');
   refs.todoList.innerHTML = markupTodoItems;
-  const markupTodoCategories = calculateTodoListStats().map(todoCategoryTemp).join('');
+  const markupTodoCategories = calculateTodoListStats(todoList).map(todoCategoryTemp).join('');
   refs.todoCategories.innerHTML = markupTodoCategories;
 }
 
@@ -163,36 +161,4 @@ function OnArchiveBtnClick() {
   showArchivedTodoItems = !showArchivedTodoItems;
   renderTodoItems(showArchivedTodoItems);
   document.querySelector('#head').classList.toggle('todos_header_archive');
-}
-
-function calculateTodoListStats() {
-  const res = [];
-  const ideaTodos = todoList.filter(todoItem => todoItem.category === 'idea');
-  const thoughtTodos = todoList.filter(todoItem => todoItem.category === 'thought');
-  const taskTodos = todoList.filter(todoItem => todoItem.category === 'task');
-  if (taskTodos.length > 0) {
-    res.push({
-      category: 'task',
-      categoryText: 'Task',
-      active: taskTodos.filter(todo => !todo.isArchived).length,
-      archivedAmount: taskTodos.filter(todo => todo.isArchived).length,
-    });
-  }
-  if (thoughtTodos.length > 0) {
-    res.push({
-      category: 'thought',
-      categoryText: 'Random thought',
-      active: thoughtTodos.filter(todo => !todo.isArchived).length,
-      archivedAmount: thoughtTodos.filter(todo => todo.isArchived).length,
-    });
-  }
-  if (ideaTodos.length > 0) {
-    res.push({
-      category: 'idea',
-      categoryText: 'Idea',
-      active: ideaTodos.filter(todo => !todo.isArchived).length,
-      archivedAmount: ideaTodos.filter(todo => todo.isArchived).length,
-    });
-  }
-  return res;
 }
