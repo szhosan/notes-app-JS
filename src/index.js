@@ -1,4 +1,3 @@
-import './sass/main.scss';
 import uniqid from 'uniqid';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
