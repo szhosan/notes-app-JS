@@ -108,7 +108,7 @@ function updateTodoItem(id, { name, category, categoryText, content, dates }) {
   todoList[i].category = category;
   todoList[i].categoryText = categoryText;
   todoList[i].content = content;
-  todoList[i].dates = [...dates];
+  todoList[i].dates = dates;
 }
 
 function setItemsForEditToModal({ id, name, category, created, content }) {
