@@ -1,4 +1,4 @@
-import capitalize from '../index';
+import capitalize from './capitalize';
 
 export default function calculateTodoListStats(todoList) {
   let res = [];
