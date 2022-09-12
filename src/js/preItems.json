@@ -4,8 +4,8 @@
     "name": "Task #1",
     "category": "task",
     "categoryText": "Task",
-    "content": "12/10/2020 Content of task #1",
-    "created": "April 21, 2022",
+    "content": "12/10/2022 Content of task #1",
+    "created": "Septemper 10, 2022",
     "isArchived": false,
     "dates": ["12/10/2020"]
   },
@@ -15,7 +15,7 @@
     "category": "task",
     "categoryText": "Task",
     "content": "Content of task #2",
-    "created": "April 21, 2022",
+    "created": "September 11, 2022",
     "isArchived": false
   },
   {
@@ -24,7 +24,7 @@
     "category": "idea",
     "categoryText": "Idea",
     "content": "Content of Idea #1",
-    "created": "April 20, 2022",
+    "created": "September 12, 2022",
     "isArchived": true
   },
   {
@@ -33,7 +33,7 @@
     "category": "thought",
     "categoryText": "Random thought",
     "content": "Content of Thought #1",
-    "created": "April 20, 2022",
+    "created": "September 8, 2022",
     "isArchived": false
   },
   {
@@ -42,7 +42,7 @@
     "category": "idea",
     "categoryText": "Idea",
     "content": "Content of Idea #11",
-    "created": "April 20, 2022",
+    "created": "September 7, 2022",
     "isArchived": true
   },
   {
@@ -51,7 +51,7 @@
     "category": "task",
     "categoryText": "Task",
     "content": "Content of task #25",
-    "created": "April 21, 2022",
+    "created": "September 6, 2022",
     "isArchived": false
   },
   {
@@ -60,7 +60,7 @@
     "category": "thought",
     "categoryText": "Random thought",
     "content": "Content of Thought #77",
-    "created": "April 20, 2022",
+    "created": "September 5, 2022",
     "isArchived": false
   }
 ]
