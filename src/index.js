@@ -26,4 +26,4 @@ refs.form.addEventListener('submit', OnFormSubmit);
 refs.deleteAllBtn.addEventListener('click', onDeleteAllClick);
 
 export const todoList = [...items];
-renderTodoItems(false);
+renderTodoItems();

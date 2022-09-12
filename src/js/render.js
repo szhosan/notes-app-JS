@@ -4,7 +4,7 @@ import todoCategoryTemp from '../template/todoCategoryItem.hbs';
 import todoItemTemp from '../template/todoItem.hbs';
 import { todoList } from '../index';
 
-export default function renderTodoItems(showArchived) {
+export default function renderTodoItems(showArchived = false) {
   const markupTodoItems = todoList
     .filter(todo => todo.isArchived === showArchived)
     .map(todoItemTemp)
